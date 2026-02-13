@@ -12,8 +12,7 @@ export const personal = {
 };
 
 export const about = {
-    heading: 'What I do',
-    tag: 'About me',
+    heading: 'About Me',
     paragraphs: [
         `I'm a selectively skilled developer with a strong focus on
      <span class="text-accent">machine learning</span>,

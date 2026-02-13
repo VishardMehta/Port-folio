@@ -1,91 +1,92 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useMemo } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { about } from '../data/portfolio';
+import './About.css';
 
 /**
- * Splits text into words and animates their color
- * from dim → lit as the user scrolls through the section.
+ * Parse HTML paragraphs → flat array of { text, accent } words.
  */
-function ScrollColorText({ html }) {
-    const containerRef = useRef(null);
-
-    useEffect(() => {
-        const container = containerRef.current;
-        if (!container) return;
-
-        // Strip HTML to plain text and get accent spans
-        const temp = document.createElement('div');
-        temp.innerHTML = html;
-
-        // Build word spans preserving accent markup
-        const words = [];
-        temp.childNodes.forEach((node) => {
-            if (node.nodeType === Node.TEXT_NODE) {
-                node.textContent.split(/(\s+)/).forEach((w) => {
-                    if (w.trim()) words.push({ text: w, accent: false });
-                });
-            } else if (node.tagName === 'SPAN' && node.classList.contains('text-accent')) {
-                node.textContent.split(/(\s+)/).forEach((w) => {
-                    if (w.trim()) words.push({ text: w, accent: true });
-                });
-            }
+function parseWords(paragraphs) {
+    const words = [];
+    paragraphs.forEach((html) => {
+        const parts = html.split(/(<span class="text-accent">.*?<\/span>)/g);
+        parts.forEach((part) => {
+            const isAccent = part.startsWith('<span');
+            const text = part.replace(/<[^>]*>/g, '').trim();
+            text.trim()
+                .split(/\s+/)
+                .filter(Boolean)
+                .forEach((w) => words.push({ text: w, accent: isAccent }));
         });
-
-        // Render word spans
-        container.innerHTML = words
-            .map(
-                (w, i) =>
-                    `<span class="scroll-color-word" data-idx="${i}" data-accent="${w.accent}">${w.text}</span> `
-            )
-            .join('');
-
-        const wordEls = container.querySelectorAll('.scroll-color-word');
-
-        const onScroll = () => {
-            const rect = container.getBoundingClientRect();
-            const vh = window.innerHeight;
-            // Progress from 0 → 1 as the paragraph scrolls through
-            const progress = Math.min(
-                1,
-                Math.max(0, (vh - rect.top) / (vh + rect.height))
-            );
-            const litCount = Math.floor(progress * wordEls.length * 1.4);
-
-            wordEls.forEach((el, i) => {
-                if (i < litCount) {
-                    el.classList.add(
-                        el.dataset.accent === 'true' ? 'lit-accent' : 'lit'
-                    );
-                } else {
-                    el.classList.remove('lit', 'lit-accent');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-
-        return () => window.removeEventListener('scroll', onScroll);
-    }, [html]);
-
-    return <p className="about-text" ref={containerRef} />;
+    });
+    return words;
 }
 
 export default function About() {
-    const ref = useScrollReveal();
+    const revealRef = useScrollReveal();
+    const wrapRef = useRef(null);
+
+    const words = useMemo(() => parseWords(about.paragraphs), []);
+
+    useEffect(() => {
+        const section = wrapRef.current;
+        if (!section) return;
+
+        const wordEls = section.querySelectorAll('.about-word');
+        let ticking = false;
+
+        function update() {
+            const rect = section.getBoundingClientRect();
+            const sectionHeight = section.offsetHeight;
+            const windowHeight = window.innerHeight;
+
+            // Reveal: starts at 85% viewport, finishes when top is
+            // 25% of section height above the viewport
+            const triggerStart = windowHeight * 0.9;
+            const triggerEnd = sectionHeight * 0.5;
+            const scrollProgress =
+                (triggerStart - rect.top) / (triggerStart - triggerEnd);
+            const clamped = Math.min(Math.max(scrollProgress, 0), 1);
+
+            const activeIndex = Math.ceil(clamped * wordEls.length);
+
+            wordEls.forEach((word, i) => {
+                word.style.opacity = i <= activeIndex ? 1 : 0.2;
+            });
+
+            ticking = false;
+        }
+
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(update);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        update();
+
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     return (
-        <section className="section about" id="about" ref={ref}>
-            <div className="about-wrap">
+        <section className="section about" id="about" ref={revealRef}>
+            <div className="about-wrap" ref={wrapRef}>
                 <div className="section-header reveal">
-                    <span className="section-tag">{about.tag}</span>
                     <h2 className="section-title">{about.heading}</h2>
                 </div>
-                <div className="about-content reveal">
-                    {about.paragraphs.map((p, i) => (
-                        <ScrollColorText key={i} html={p} />
+
+                <p className="about-scroll-text">
+                    {words.map((w, i) => (
+                        <span
+                            key={i}
+                            className={`about-word${w.accent ? ' accent' : ''}`}
+                        >
+                            {w.text}{' '}
+                        </span>
                     ))}
-                </div>
+                </p>
             </div>
         </section>
     );

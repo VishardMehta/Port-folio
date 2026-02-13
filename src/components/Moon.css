@@ -1,0 +1,93 @@
+/* ===================================
+   MOON — 3D Parallax Section
+   =================================== */
+
+.moon-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 4rem 0;
+    z-index: 1;
+}
+
+/* Soft radial glow behind the moon */
+.moon-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    height: 700px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle,
+            rgba(200, 190, 170, 0.08) 0%,
+            rgba(200, 190, 170, 0.03) 40%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(40px);
+}
+
+/* Scroll-driven parallax wrapper */
+.moon-parallax {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3D tilt container */
+.moon-tilt {
+    transition: transform 0.15s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
+    cursor: grab;
+}
+
+.moon-tilt:active {
+    cursor: grabbing;
+}
+
+/* The moon image */
+.moon-img {
+    display: block;
+    width: clamp(300px, 50vw, 600px);
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    user-select: none;
+
+    /* Subtle shadow for depth */
+    box-shadow:
+        0 0 60px rgba(200, 190, 170, 0.12),
+        0 0 120px rgba(200, 190, 170, 0.06),
+        inset 0 0 80px rgba(0, 0, 0, 0.3);
+
+    /* Slight vignette border */
+    filter: contrast(1.1) brightness(0.95);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .moon-img {
+        width: clamp(220px, 70vw, 400px);
+    }
+
+    .moon-glow {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .moon-section {
+        min-height: 60vh;
+    }
+
+    .moon-img {
+        width: clamp(180px, 80vw, 300px);
+    }
+}

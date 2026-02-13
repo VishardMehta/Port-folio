@@ -1,0 +1,52 @@
+/* ===================================
+   ABOUT — Scroll-Linked Word Reveal
+   =================================== */
+
+.about-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.about-wrap::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: -120px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(ellipse at center,
+            rgba(235, 89, 57, 0.06) 0%,
+            rgba(235, 89, 57, 0.02) 40%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(60px);
+}
+
+/* Match hero typography */
+.about-scroll-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: -0.04em;
+    text-wrap: pretty;
+}
+
+.about-word {
+    display: inline;
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+}
+
+.about-word.accent {
+    color: var(--orange);
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .about-scroll-text {
+        font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+    }
+}

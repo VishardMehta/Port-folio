@@ -31,7 +31,7 @@ export default function Cursor() {
         // Hover effect delegation
         const onOver = (e) => {
             // Check for magnetic hero text
-            const heroLine = e.target.closest('.hero-line, .hero-title, .motto-text');
+            const heroLine = e.target.closest('.hero-line, .hero-title, .motto-text, .about-scroll-text');
             if (heroLine) {
                 dotRef.current?.classList.add('hero-magnetic');
                 followerRef.current?.classList.add('hero-magnetic');
@@ -50,7 +50,7 @@ export default function Cursor() {
         };
 
         const onOut = (e) => {
-            const heroLine = e.target.closest('.hero-line, .hero-title, .motto-text, .motto');
+            const heroLine = e.target.closest('.hero-line, .hero-title, .motto-text, .motto, .about-scroll-text');
             if (heroLine) {
                 dotRef.current?.classList.remove('hero-magnetic');
                 followerRef.current?.classList.remove('hero-magnetic');

@@ -8,7 +8,7 @@ export default function Projects() {
         <section className="section work" id="work" ref={ref}>
             <div className="section-header reveal">
                 <span className="section-tag">Projects</span>
-                <h2 className="section-title">Selected Work</h2>
+                <h2 className="section-title">My Work</h2>
             </div>
 
             <div className="projects-grid">

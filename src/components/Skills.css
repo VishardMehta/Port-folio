@@ -1,0 +1,183 @@
+/* ===================================
+   SKILLS — Full-Bleed Hover List
+   Rows span the entire viewport width.
+   Orange bar + dividers go edge-to-edge.
+   =================================== */
+
+/* Remove horizontal padding so rows go full-width */
+section.skills {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Keep the header text indented to match other sections */
+.skills .section-header {
+    padding-left: 8rem;
+    padding-right: 8rem;
+}
+
+/* Vertical stack */
+.skills-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---- Each Row (full viewport width) ---- */
+.skill-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 3rem 1.5rem 8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    overflow: hidden;
+    transition: opacity 0.35s ease;
+}
+
+.skill-row:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Non-hovered rows dim out */
+.skill-row.dimmed {
+    opacity: 0.2;
+}
+
+/* ---- Orange Bar (center-pop, vertical expand) ---- */
+.skill-bar {
+    position: absolute;
+    inset: 0;
+    background: var(--orange);
+    z-index: 0;
+    transform-origin: center;
+}
+
+/* ---- Strike-Through Line (orange, full width) ---- */
+.skill-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: var(--orange);
+    opacity: 0.45;
+    transform-origin: left;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ---- Row Number ---- */
+.skill-number {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.15);
+    position: relative;
+    z-index: 1;
+    min-width: 2rem;
+    transition: color 0.3s ease;
+}
+
+/* ---- Massive Heading (scroll-driven opacity via JS) ---- */
+.skill-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.15);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+/* Active — black text on orange (overrides scroll-driven color) */
+.skill-row.active .skill-heading {
+    color: #0a0a0a !important;
+}
+
+.skill-row.active .skill-number {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ---- Description (always in row, black text, centered right) ----
+   Black text is invisible on dark background.
+   Orange bar makes it appear when hovered. */
+.skill-hover-desc {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 260px;
+    margin: 0 auto;
+    margin-left: 65%;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #0a0a0a;
+    line-height: 1.6;
+    z-index: 3;
+    text-align: left;
+    pointer-events: none;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+    .skills .section-header {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .skill-row {
+        padding-left: 4rem;
+        padding-right: 2rem;
+    }
+
+    .skill-heading {
+        font-size: clamp(2rem, 5.5vw, 4rem);
+    }
+
+    .skill-hover-desc {
+        max-width: 180px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills .section-header {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .skill-row {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .skill-heading {
+        font-size: clamp(1.5rem, 8vw, 3rem);
+    }
+
+    .skill-hover-desc {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills .section-header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .skill-row {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .skill-heading {
+        font-size: clamp(1.2rem, 7vw, 2rem);
+    }
+}

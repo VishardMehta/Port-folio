@@ -486,271 +486,7 @@ img {
     }
 }
 
-/* ===================================
-   ABOUT — with blended orange gradient
-   =================================== */
-.about-wrap {
-    max-width: 900px;
-    position: relative;
-}
-
-/* Blended warm gradient behind about text */
-.about-wrap::before {
-    content: '';
-    position: absolute;
-    top: -60px;
-    left: -120px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(ellipse at center,
-            rgba(235, 89, 57, 0.08) 0%,
-            rgba(235, 89, 57, 0.03) 40%,
-            transparent 70%);
-    pointer-events: none;
-    z-index: -1;
-    filter: blur(60px);
-}
-
-.about-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.about-text {
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-    font-weight: 300;
-    line-height: 1.8;
-    color: var(--cream);
-}
-
-/* ===================================
-   SKILLS (Horizontal Scroll Cards) — FIXED CROP
-   =================================== */
-.skills {
-    padding: 6rem 0 6rem 0;
-    overflow: visible;
-}
-
-.skills-track {
-    display: flex;
-    gap: 2rem;
-    padding: 2rem 8rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch;
-}
-
-.skills-track::-webkit-scrollbar {
-    display: none;
-}
-
-.skill-card {
-    flex: 0 0 300px;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 2.5rem 2rem;
-    scroll-snap-align: start;
-    transition: border-color 0.4s ease, transform 0.4s ease;
-}
-
-.skill-card:hover {
-    border-color: var(--orange);
-    transform: translateY(-6px);
-}
-
-.skill-title {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
-}
-
-.skill-desc {
-    font-size: 0.9rem;
-    color: var(--dim);
-    line-height: 1.7;
-}
-
-/* ===================================
-   TIMELINE — Vertical
-   =================================== */
-.experience {
-    max-width: 900px;
-    margin: 0 auto;
-    min-height: 100vh;
-}
-
-.timeline-vertical {
-    position: relative;
-    padding-left: 3rem;
-}
-
-.timeline-line {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom,
-            transparent 0%,
-            var(--orange) 10%,
-            var(--orange) 90%,
-            transparent 100%);
-    opacity: 0.4;
-}
-
-.timeline-entry {
-    position: relative;
-    padding: 2rem 0 2rem 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        background 0.4s ease;
-    border-radius: 8px;
-    margin-left: -0.5rem;
-    padding-left: 2.5rem;
-    will-change: transform;
-}
-
-.timeline-entry::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    background: linear-gradient(90deg, rgba(235, 89, 57, 0.06) 0%, transparent 100%);
-    transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-radius: 8px;
-    pointer-events: none;
-}
-
-.timeline-entry:hover {
-    transform: scale(1.04) translateX(8px);
-}
-
-.timeline-entry:hover::before {
-    width: 100%;
-}
-
-.timeline-entry:last-child {
-    border-bottom: none;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: -3rem;
-    top: 2.5rem;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 2px solid var(--orange);
-    z-index: 2;
-    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.timeline-entry:hover .timeline-dot {
-    background: var(--orange);
-    box-shadow: 0 0 16px rgba(235, 89, 57, 0.6);
-    transform: scale(1.4);
-}
-
-.timeline-period {
-    font-family: var(--font-heading);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 0.6rem;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.timeline-entry:hover .timeline-period {
-    opacity: 1;
-}
-
-.timeline-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.timeline-role {
-    font-family: var(--font-heading);
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: -0.02em;
-    transition: color 0.3s ease;
-}
-
-.timeline-entry:hover .timeline-role {
-    color: var(--orange);
-}
-
-.timeline-org {
-    font-size: 0.85rem;
-    color: var(--dim);
-    font-weight: 400;
-    transition: color 0.3s ease;
-}
-
-.timeline-entry:hover .timeline-org {
-    color: var(--cream);
-}
-
-.timeline-desc {
-    font-size: 0.9rem;
-    color: var(--cream);
-    line-height: 1.7;
-    margin-top: 0.5rem;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: opacity 0.4s ease 0.1s, max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.timeline-entry:hover .timeline-desc {
-    opacity: 0.8;
-    max-height: 120px;
-}
-
-.timeline-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.75rem;
-    opacity: 0;
-    transition: opacity 0.4s ease 0.15s;
-}
-
-.timeline-entry:hover .timeline-tags {
-    opacity: 1;
-}
-
-.timeline-tags span {
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    padding: 0.2em 0.7em;
-    border: 1px solid #333;
-    border-radius: 50px;
-    color: var(--cream);
-    transition: border-color 0.3s ease, color 0.3s ease;
-}
-
-.timeline-entry:hover .timeline-tags span {
-    border-color: var(--orange);
-    color: var(--orange);
-}
+/* (Timeline styles moved to Timeline.css) */
 
 /* ===================================
    PROJECTS / WORK
@@ -1166,21 +902,23 @@ img {
     text-decoration: none;
 }
 
-/* Orange expanding bar behind text */
+/* Orange expanding bar behind text — Vertical Center Out */
 .connect-link::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
-    width: 0;
+    width: 100%;
+    height: 100%;
     background: var(--orange);
-    transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     z-index: 0;
 }
 
 .connect-link:hover::before {
-    width: 100%;
+    transform: scaleY(1);
 }
 
 /* Small orange arrow marker */
@@ -1281,9 +1019,6 @@ img {
         padding: 4rem 4rem;
     }
 
-    .skills-track {
-        padding: 2rem 4rem;
-    }
 
     .connect-body {
         grid-template-columns: 1fr 1fr;
@@ -1299,9 +1034,6 @@ img {
         padding: 3rem 1.5rem;
     }
 
-    .skills-track {
-        padding: 2rem 1.5rem;
-    }
 
     .projects-grid {
         grid-template-columns: 1fr;
@@ -1343,13 +1075,6 @@ img {
         padding: 2rem 1rem;
     }
 
-    .skills-track {
-        padding: 2rem 1rem;
-    }
-
-    .skill-card {
-        flex: 0 0 260px;
-    }
 
     .cursor,
     .cursor-follower {
