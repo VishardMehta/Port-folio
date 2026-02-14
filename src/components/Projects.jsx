@@ -17,6 +17,28 @@ export default function Projects() {
                         <div className="project-number">{p.number}</div>
                         <h3 className="project-name">{p.name}</h3>
                         <p className="project-desc">{p.desc}</p>
+                        <div className="project-links">
+                            {p.repo && (
+                                <a
+                                    href={p.repo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="project-link"
+                                >
+                                    GitHub ↗
+                                </a>
+                            )}
+                            {p.link && p.link !== '#' && p.link !== p.repo && (
+                                <a
+                                    href={p.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="project-link live"
+                                >
+                                    Live Demo ↗
+                                </a>
+                            )}
+                        </div>
                         <div className="project-tags">
                             {p.tags.map((t, j) => (
                                 <span key={j}>{t}</span>

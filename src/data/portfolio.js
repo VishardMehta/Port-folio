@@ -14,17 +14,15 @@ export const personal = {
 export const about = {
     heading: 'About Me',
     paragraphs: [
-        `I'm a selectively skilled developer with a strong focus on
-     <span class="text-accent">machine learning</span>,
-     <span class="text-accent">data science</span>, and building
-     <span class="text-accent">high-quality digital products</span>.
-     I love turning complex problems into elegant, user-friendly solutions.`,
-        `Currently studying at Thapar Institute of Engineering & Technology,
-     I spend my time building AI-powered tools, competing on Kaggle,
-     and contributing to open source.`,
+        `I'm a developer working at the intersection of 
+     <span class="text-accent">machine learning</span>, 
+     <span class="text-accent">data science</span>, and 
+     <span class="text-accent">scalable web applications</span>. 
+     I build systems that are not just intelligent, but production-ready.`,
+        
+        `I enjoy solving complex problems, designing clean architectures, and shipping products that deliver real-world impact.`,
     ],
 };
-
 export const skills = [
     {
         title: 'Machine Learning',
@@ -50,63 +48,67 @@ export const skills = [
 
 export const timeline = [
     {
-        period: '2024 — Present',
-        role: 'ML Engineer & Developer',
-        org: 'Personal Projects & Kaggle',
-        description: 'Building AI-powered tools, competing in data science competitions, and shipping production-grade ML models.',
-        tags: ['Python', 'PyTorch', 'Kaggle'],
+        period: 'Mar 2020 — Apr 2022',
+        role: 'High School (12th Grade)',
+        org: 'Hoshiarpur, Punjab',
+        description: 'Achieved 98.6% in finals while preparing for JEE. Strong foundation in Physics, Mathematics, and Computer Science.',
+        tags: ['Physics', 'Mathematics', '98.6%'],
     },
     {
-        period: '2023 — Present',
-        role: 'Computer Science Student',
+        period: 'Oct 2023 — May 2025',
+        role: 'Event Coordinator',
+        org: 'Microsoft Student Learn Chapter',
+        description: 'Organized technical workshops, hackathons, and seminars to foster a culture of learning and innovation within the student community.',
+        tags: ['Leadership', 'Management', 'Public Speaking'],
+    },
+    {
+        period: 'June 2023 — Present',
+        role: 'Full Stack & ML Engineer',
+        org: 'Kaggle & Open Source',
+        description: 'Developing advanced machine learning models, competing in global challenges, and pushing the state of the art in computer vision.',
+        tags: ['PyTorch', 'Computer Vision', 'Deep Learning'],
+    },
+    {
+        period: 'Aug 2023 — Present',
+        role: 'B.E. Computer Science',
         org: 'Thapar Institute of Engineering & Technology',
-        description: 'Pursuing B.E. in Computer Science with focus on ML, data structures, and full-stack development.',
-        tags: ['Algorithms', 'DSA', 'Mathematics'],
-    },
-    {
-        period: '2024',
-        role: 'Open Source Contributor',
-        org: 'GitHub',
-        description: 'Contributing to open-source projects, building developer tools, and sharing knowledge with the community.',
-        tags: ['Git', 'Collaboration', 'Open Source'],
-    },
-    {
-        period: '2023 — 2024',
-        role: 'ML Enthusiast',
-        org: 'Self-taught & Kaggle Competitor',
-        description: 'Deep-dived into machine learning, computer vision, and generative models through hands-on projects and competitions.',
-        tags: ['CNNs', 'GANs', 'Computer Vision'],
+        description: 'Pursuing Bachelor of Engineering with a focus on Artificial Intelligence, Data Structures, and Software Engineering.',
+        tags: ['AI', 'DSA', 'Full Stack'],
     },
 ];
 
 export const projects = [
     {
         number: '01',
-        name: 'Shadow Trainer',
-        desc: 'AI-powered sports coaching platform using pose estimation and biomechanical analysis to compare amateur players with professionals.',
-        tags: ['Python', 'Computer Vision', 'Deep Learning'],
-        link: '#',
+        name: 'PullWise AI',
+        desc: 'AI-themed landing page and profile dashboard featuring GitHub OAuth, Supabase integration, and a modern dark-mode UI.',
+        tags: ['React', 'Supabase', 'Tailwind'],
+        link: 'https://pullwise.vercel.app',
+        repo: 'https://github.com/VishardMehta/pullwise-ai',
     },
     {
         number: '02',
-        name: 'GAN PDF Estimator',
-        desc: 'Generative Adversarial Network that learns complex data distributions and estimates probability density functions.',
-        tags: ['PyTorch', 'GANs', 'Data Science'],
-        link: '#',
+        name: 'Traffic Sign YOLO',
+        desc: 'Real-time traffic sign detection system utilizing YOLO architecture for high-accuracy object recognition in autonomous scenarios.',
+        tags: ['Python', 'YOLO', 'Computer Vision'],
+        link: 'https://github.com/VishardMehta/Traffic-sign-Yolo',
+        repo: 'https://github.com/VishardMehta/Traffic-sign-Yolo',
     },
     {
         number: '03',
-        name: 'Stock Predictor',
-        desc: 'FAANG stock prediction pipeline using LightGBM, XGBoost, and deep learning for time-series forecasting.',
-        tags: ['ML', 'Finance', 'XGBoost'],
-        link: '#',
+        name: 'Statespace AI',
+        desc: 'Advanced Pac-Man agent implementing A*, BFS, and Hill Climbing algorithms to simulate intelligent ghost behaviors and pathfinding.',
+        tags: ['Python', 'AI', 'Algorithms'],
+        link: 'https://github.com/VishardMehta/Pacman-AI',
+        repo: 'https://github.com/VishardMehta/Pacman-AI',
     },
     {
         number: '04',
-        name: 'Portfolio Website',
-        desc: 'This very site — a premium dark-mode portfolio with custom cursor, scroll animations, and editorial typography.',
-        tags: ['React', 'CSS', 'JavaScript'],
-        link: '#',
+        name: 'Game Inventory',
+        desc: 'Full-stack inventory management system with real-time marketplace, role-based auth, and secure RESTful APIs.',
+        tags: ['React', 'Node.js', 'PostgreSQL'],
+        link: 'https://github.com/VishardMehta/Game-inventory',
+        repo: 'https://github.com/VishardMehta/Game-inventory',
     },
 ];
 

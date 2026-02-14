@@ -5,7 +5,8 @@
     --bg: #0d0d0d;
     --cream: #b7ab98;
     --orange: #eb5939;
-    --white: #e8e4de;
+    --white: #ebe5da;
+    /* Pastel Off-White */
     --dim: #555049;
     --card-bg: #161616;
     --card-border: #222;
@@ -62,8 +63,8 @@ img {
     pointer-events: none;
     z-index: 0;
     background-image:
-        linear-gradient(rgba(183, 171, 152, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(183, 171, 152, 0.035) 1px, transparent 1px);
+        linear-gradient(rgba(183, 171, 152, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(183, 171, 152, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
 }
 
@@ -132,15 +133,17 @@ img {
 }
 
 .cursor.hero-magnetic {
-    width: 120px;
-    height: 120px;
+    width: 240px;
+    /* 2x size from 120px */
+    height: 240px;
     opacity: 0.9;
     mix-blend-mode: difference;
 }
 
 .cursor-follower.hero-magnetic {
-    width: 140px;
-    height: 140px;
+    width: 280px;
+    /* 2x size from 140px */
+    height: 280px;
     opacity: 0.12;
     border-width: 2px;
 }
@@ -579,6 +582,27 @@ img {
 .project-card:hover .project-tags span {
     border-color: var(--orange);
     color: var(--orange);
+}
+
+.project-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.project-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.project-link:hover {
+    color: var(--orange);
+    border-bottom-color: var(--orange);
 }
 
 /* ===================================

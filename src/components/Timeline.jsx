@@ -63,7 +63,7 @@ export default function Timeline() {
             const totalWidthRaw = numCards * cardWidth;
 
             // If raw width fits, use standard gap. If not, use required overlap.
-            let gap = 40;
+            let gap = 20; // Reduced spacing per request
             if (totalWidthRaw > availableWidth && numCards > 1) {
                 // negative gap = overlap
                 gap = (availableWidth - totalWidthRaw) / (numCards - 1);
@@ -161,7 +161,7 @@ export default function Timeline() {
                     <Canvas shadows dpr={[1, 2]} camera={{ fov: 45 }}>
                         <Suspense fallback={null}>
                             {/* Darker per request: intensity 0.15 */}
-                            <Stage environment="city" intensity={0.15} contactShadow={false} adjustCamera>
+                            <Stage environment="city" intensity={0.05} contactShadow={false} adjustCamera>
                                 <MoonModel scrollProgress={scrollProgress} />
                             </Stage>
                         </Suspense>
