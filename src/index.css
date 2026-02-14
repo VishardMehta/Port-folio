@@ -609,16 +609,19 @@ img {
    3D CUBE
    =================================== */
 .cube-container {
-    perspective: 600px;
+    perspective: 800px;
+    /* Increased perspective for bigger cube */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 300px;
+    /* Increased container height */
 }
 
 .cube {
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    /* Increased from 120px */
+    height: 200px;
     position: relative;
     transform-style: preserve-3d;
     animation: cubeRotate 12s infinite linear;
@@ -626,13 +629,14 @@ img {
 
 .cube-face {
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    /* Increased font size */
     font-weight: 700;
     color: var(--orange);
     border: 1px solid var(--card-border);
@@ -641,27 +645,28 @@ img {
 }
 
 .front {
-    transform: translateZ(60px);
+    transform: translateZ(100px);
+    /* Half of 200px */
 }
 
 .back {
-    transform: rotateY(180deg) translateZ(60px);
+    transform: rotateY(180deg) translateZ(100px);
 }
 
 .right {
-    transform: rotateY(90deg) translateZ(60px);
+    transform: rotateY(90deg) translateZ(100px);
 }
 
 .left {
-    transform: rotateY(-90deg) translateZ(60px);
+    transform: rotateY(-90deg) translateZ(100px);
 }
 
 .top {
-    transform: rotateX(90deg) translateZ(60px);
+    transform: rotateX(90deg) translateZ(100px);
 }
 
 .bottom {
-    transform: rotateX(-90deg) translateZ(60px);
+    transform: rotateX(-90deg) translateZ(100px);
 }
 
 @keyframes cubeRotate {

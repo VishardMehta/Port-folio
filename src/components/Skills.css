@@ -114,7 +114,8 @@ section.skills {
     transform: translateY(-50%);
     max-width: 260px;
     margin: 0 auto;
-    margin-left: 65%;
+    margin-left: 72%;
+    /* Increased from 65% to avoid overlap */
     font-size: 0.8rem;
     font-weight: 500;
     color: #0a0a0a;

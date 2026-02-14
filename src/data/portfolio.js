@@ -19,30 +19,30 @@ export const about = {
      <span class="text-accent">data science</span>, and 
      <span class="text-accent">scalable web applications</span>. 
      I build systems that are not just intelligent, but production-ready.`,
-        
+
         `I enjoy solving complex problems, designing clean architectures, and shipping products that deliver real-world impact.`,
     ],
 };
 export const skills = [
     {
-        title: 'Machine Learning',
-        desc: 'I build models that learn from data and make intelligent predictions — from CNNs to GANs.',
+        title: 'ML & DL',
+        desc: 'Advanced neural networks (CNNs, Transformers) with PyTorch & TensorFlow, alongside intelligent models using Scikit-learn, XGBoost, and classical ML algorithms.',
     },
     {
-        title: 'Web Dev',
-        desc: 'I turn ideas into interactive, responsive experiences using modern web technologies.',
+        title: 'Full Stack',
+        desc: 'Building scalable, end-to-end web applications with React, Node.js, and modern databases.',
+    },
+    {
+        title: 'UI/UX ',
+        desc: 'Designing intuitive, user-centric interfaces with a focus on aesthetics and functionality.',
     },
     {
         title: 'Data Science',
-        desc: 'I extract insights from raw data using Python, Pandas, and visualization tools.',
+        desc: 'Extracting insights from raw data using Python, Pandas, and advanced visualization tools.',
     },
     {
         title: 'Problem Solving',
-        desc: 'Competitive programming and algorithmic thinking — I thrive on optimization challenges.',
-    },
-    {
-        title: 'Deep Learning',
-        desc: 'Neural networks, transformers, and beyond — pushing the boundaries of AI.',
+        desc: 'Competitive programming and algorithmic thinking — thriving on optimization challenges.',
     },
 ];
 
