@@ -8,7 +8,7 @@ export const personal = {
     tagline: 'Developer • ML Enthusiast • Builder',
     email: 'vishardmehta@gmail.com',
     github: 'https://github.com/VishardMehta',
-    linkedin: 'https://www.linkedin.com/in/vishard-mehta/',
+    linkedin: 'https://www.linkedin.com/in/vishardmehta/',
 };
 
 export const about = {
