@@ -110,6 +110,22 @@ export const projects = [
         link: 'https://github.com/VishardMehta/Game-inventory',
         repo: 'https://github.com/VishardMehta/Game-inventory',
     },
+    {
+        number: '05',
+        name: 'Fitify (Under Construction)',
+        desc: 'Multi-platform fitness application built with Flutter featuring real-time tracking and personalized workouts.',
+        tags: ['Flutter', 'Dart', 'Cross-Platform'],
+        link: '#',
+        repo: 'https://github.com/VishardMehta/Fitify',
+    },
+    {
+        number: '06',
+        name: '3D Gravity Simulator',
+        desc: 'Interactive 3D spacetime physics engine for visualizing gravitational interactions between celestial bodies.',
+        tags: ['C++', 'OpenGL', 'Physics'],
+        link: 'https://github.com/VishardMehta/gravity-simulator',
+        repo: 'https://github.com/VishardMehta/gravity-simulator',
+    },
 ];
 
 export const testimonials = [
