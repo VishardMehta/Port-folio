@@ -19,39 +19,30 @@
 .journey-header {
     position: absolute;
     top: 5vh;
-    /* Higher up */
     left: 0;
     width: 100%;
     text-align: center;
-    /* User wanted "My Journey" ABOVE moon */
-    /* Moon z-index is 3. So Header needs > 3 */
     z-index: 10;
     pointer-events: none;
-    /* Let scroll pass through */
 }
 
 .section-title {
     font-size: clamp(3rem, 6vw, 5rem);
     color: rgba(255, 255, 255, 0.9);
     letter-spacing: -0.02em;
-    /* Removed blend mode as it might make it look "behind" if moon is dark */
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-    /* Ensure readable over moon */
 }
 
-/* 3D Moon */
+/* Earth Globe */
 .moon-3d-canvas {
     position: absolute;
-    /* Center vertical */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* Mid Size */
     width: clamp(360px, 48vw, 550px);
     height: clamp(360px, 48vw, 550px);
     z-index: 1;
-    /* Below Header */
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 /* Ambient Glow */
@@ -64,7 +55,6 @@
     height: 600px;
     background: radial-gradient(circle,
             rgba(255, 120, 50, 0.04) 0%,
-            /* Subtle orange */
             rgba(50, 50, 50, 0.02) 40%,
             transparent 70%);
     pointer-events: none;
@@ -75,21 +65,11 @@
 /* Cards Container */
 .cards-center-container {
     position: absolute;
-    /* Center it fully vertically to overlap moon nicely? 
-       Or below moon?
-       User said "moon below my journey text".
-       And "cards in same row".
-      /* Ideally cards overlay the bottom of the moon */
     top: 65%;
-    /* Lower half */
     left: 50%;
-    /* Standard Centering for Container */
-    /* NOTE: We don't use translateX(-50%) here because children use absolute positioning from center point */
     width: 0;
-    /* Zero width container at center */
     height: 0;
     z-index: 5;
-    /* Above everything */
     pointer-events: none;
     display: flex;
     justify-content: center;
@@ -98,14 +78,12 @@
 
 .orbital-cards {
     position: relative;
-    /* Children are absolute */
 }
 
 .orbital-card {
     position: absolute;
     top: 0;
     left: 0;
-    /* Center alignment handled by JS transform + translateX(-50%) */
 
     background: rgba(18, 18, 18, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -115,7 +93,6 @@
         0 20px 50px rgba(0, 0, 0, 0.7),
         inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
-    /* Fixed height for uniformity */
     height: 250px;
     justify-content: center;
 
@@ -157,7 +134,6 @@
 
 .oc-content-row {
     margin-top: 1.8rem;
-    /* Push content down */
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -167,12 +143,9 @@
 
 .oc-role {
     font-size: 1.35rem;
-    /* Larger */
     color: #e8e0d5;
-    /* Pastel Cream */
     margin: 0;
     font-weight: 700;
-    /* Bolder */
     margin-right: 0.5rem;
     line-height: 1.2;
 }
@@ -180,14 +153,11 @@
 .oc-org {
     font-size: 0.9rem;
     color: #c0b8b0;
-    /* Pastel Dim */
 }
 
 .oc-desc {
     font-size: 0.9rem;
-    /* Larger */
     color: #a8a095;
-    /* Lighter Pastel Grey */
     line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 4;

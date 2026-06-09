@@ -6,7 +6,7 @@ export const personal = {
     name: 'Vishard Mehta',
     initials: 'VM',
     tagline: 'Developer • ML Enthusiast • Builder',
-    email: 'vishardmehta@gmail.com',
+    email: 'vishard2005@gmail.com',
     github: 'https://github.com/VishardMehta',
     linkedin: 'https://www.linkedin.com/in/vishardmehta/',
 };
@@ -48,6 +48,13 @@ export const skills = [
 
 export const timeline = [
     {
+        period: 'Jan 2026 — Present',
+        role: 'Quantitative ML Contributor',
+        org: 'Numerai (Remote)',
+        description: 'Deployed live staked models on Numerai\'s hedge fund tournament, reaching the top 12% globally. Built ensemble ML systems with regime-aware modeling for quantitative market prediction.',
+        tags: ['LightGBM', 'CatBoost', 'Quant ML'],
+    },
+    {
         period: 'Mar 2020 — Apr 2022',
         role: 'High School (12th Grade)',
         org: 'Hoshiarpur, Punjab',
@@ -80,6 +87,14 @@ export const timeline = [
 export const projects = [
     {
         number: '01',
+        name: 'Querix',
+        desc: 'Multi-agent NL-to-SQL pipeline for natural-language queries on structured data — a 4-agent system (Router → SQL Generator → Validator → Answer Generator) with self-healing retries and semantic caching, cutting latency from 3s to 50ms (98%). Dual Llama 3.1 8B + 3.3 70B pipeline with DuckDB profiling for CSV/Parquet, Plotly visualizations, and RAG-based insights.',
+        tags: ['React/TS', 'Llama', 'LangChain'],
+        link: 'https://github.com/VishardMehta/Querix',
+        repo: 'https://github.com/VishardMehta/Querix',
+    },
+    {
+        number: '02',
         name: 'PullWise AI',
         desc: 'AI-themed landing page and profile dashboard featuring GitHub OAuth, Supabase integration, and a modern dark-mode UI.',
         tags: ['React', 'Supabase', 'Tailwind'],
@@ -87,7 +102,7 @@ export const projects = [
         repo: 'https://github.com/VishardMehta/pullwise-ai',
     },
     {
-        number: '02',
+        number: '03',
         name: 'Traffic Sign YOLO',
         desc: 'Real-time traffic sign detection system utilizing YOLO architecture for high-accuracy object recognition in autonomous scenarios.',
         tags: ['Python', 'YOLO', 'Computer Vision'],
@@ -95,7 +110,7 @@ export const projects = [
         repo: 'https://github.com/VishardMehta/Traffic-sign-Yolo',
     },
     {
-        number: '03',
+        number: '04',
         name: 'Statespace AI',
         desc: 'Advanced Pac-Man agent implementing A*, BFS, and Hill Climbing algorithms to simulate intelligent ghost behaviors and pathfinding.',
         tags: ['Python', 'AI', 'Algorithms'],
@@ -103,7 +118,7 @@ export const projects = [
         repo: 'https://github.com/VishardMehta/Pacman-AI',
     },
     {
-        number: '04',
+        number: '05',
         name: 'Game Inventory',
         desc: 'Full-stack inventory management system with real-time marketplace, role-based auth, and secure RESTful APIs.',
         tags: ['React', 'Node.js', 'PostgreSQL'],
@@ -111,7 +126,7 @@ export const projects = [
         repo: 'https://github.com/VishardMehta/Game-inventory',
     },
     {
-        number: '05',
+        number: '06',
         name: 'Fitify (Under Construction)',
         desc: 'Multi-platform fitness application built with Flutter featuring real-time tracking and personalized workouts.',
         tags: ['Flutter', 'Dart', 'Cross-Platform'],
@@ -119,7 +134,7 @@ export const projects = [
         repo: 'https://github.com/VishardMehta/Fitify',
     },
     {
-        number: '06',
+        number: '07',
         name: '3D Gravity Simulator',
         desc: 'Interactive 3D spacetime physics engine for visualizing gravitational interactions between celestial bodies.',
         tags: ['C++', 'OpenGL', 'Physics'],

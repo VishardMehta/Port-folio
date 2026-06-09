@@ -1,32 +1,11 @@
-import { useRef, useEffect, Suspense } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, Stage, Html, OrbitControls } from '@react-three/drei';
+import { useRef, useEffect } from 'react';
+import GlobePulse from './GlobePulse';
 import { timeline } from '../data/portfolio';
 import './Timeline.css';
-
-/* ── 3D Moon Component ── */
-function MoonModel({ scrollProgress }) {
-    const { scene } = useGLTF('/moon.glb');
-    const meshRef = useRef();
-
-    useFrame(() => {
-        if (meshRef.current) {
-            // Rotation speed logic can be tuned
-            meshRef.current.rotation.y =
-                scrollProgress.current * Math.PI * 0.5 + performance.now() * 0.00005;
-        }
-    });
-
-    return <primitive ref={meshRef} object={scene} />;
-}
 
 export default function Timeline() {
     const sectionRef = useRef(null);
     const scrollProgress = useRef(0);
-
-    useEffect(() => {
-        useGLTF.preload('/moon.glb');
-    }, []);
 
     useEffect(() => {
         const section = sectionRef.current;
@@ -50,75 +29,33 @@ export default function Timeline() {
             );
             scrollProgress.current = progress;
 
-            // ── Animation Logic ──
-            // "Pile Up" Logic: Cards fly in from Right and Stack/Overlap in center.
-            // They do NOT exit left. They stay.
-
+            // "Pile Up" Logic: cards fly in from the right and stack in the center.
             const isDesktop = window.innerWidth > 768;
             const cardWidth = isDesktop ? window.innerWidth * 0.22 : window.innerWidth * 0.85;
 
-            // Overlap Logic to fit in Screen
-            // Available width = 90vw?
             const availableWidth = window.innerWidth * 0.9;
             const totalWidthRaw = numCards * cardWidth;
 
-            // If raw width fits, use standard gap. If not, use required overlap.
-            let gap = 20; // Reduced spacing per request
+            let gap = 20;
             if (totalWidthRaw > availableWidth && numCards > 1) {
-                // negative gap = overlap
                 gap = (availableWidth - totalWidthRaw) / (numCards - 1);
             }
-            // Add a limit to overlap? Don't hide more than 50%?
-            // If gap < -cardWidth * 0.5, we might need to squish scale?
-            // Let's rely on overlap for now.
 
-            // Calculate Final Positions (Centered Strip)
             const finalTotalWidth = numCards * cardWidth + (numCards - 1) * gap;
-            const startX_Chain = -finalTotalWidth / 2; // Left edge of first card relative to center
-
-            // Animation Stagger
-            const stagger = 0.1; // 10% overlap in timing
-            const entryDuration = 0.5; // Each card takes 50% of scroll to settle? 
-            // We want them to fill the sequence from 0 to 0.9.
-            // i=0 starts at 0.
-            // i=last starts at ??
-
-            // Simple mapping: 
-            // FinalX = startX_Chain + i * (cardWidth + gap) + cardWidth/2 (for center);
+            const startX_Chain = -finalTotalWidth / 2;
 
             cards.forEach((card, i) => {
-                // Final Target Position (Center of card relative to screen center)
-                // chain start + i offset + half_width
                 const finalX = startX_Chain + i * (cardWidth + gap) + cardWidth / 2;
+                const entryX = window.innerWidth / 2 + cardWidth + i * 100;
 
-                // Fly-in Logic
-                // Start Position: Offscreen Right.
-                // startX = window.innerWidth / 2 + cardWidth;
-                const entryX = window.innerWidth / 2 + cardWidth + i * 100; // Stagger start pos too?
-
-                // Timing
-                // Card i enters from progress A to B.
-                // We divide scroll into segments?
-                // Or just fluid interruptible spring feel?
-                // Let's use simple segmentation for control.
-
-                // Total duration available 0 to 0.9.
-                // Step per card?
                 const step = 0.12;
                 const startP = i * step;
-                const endP = startP + 0.4; // Valid duration
+                const endP = startP + 0.4;
 
-                // Progress normalized for this card
                 const t = Math.min(Math.max((progress - startP) / (endP - startP), 0), 1);
-                // Ease out
                 const eased = 1 - Math.pow(1 - t, 3);
 
-                // Interpolate
                 const currentX = entryX + (finalX - entryX) * eased;
-
-                // Slight Stack Effect in Z? 
-                // Card i should be above card i-1? 
-                // Standard DOM order does this (later in DOM = higher Z).
 
                 const scale = 0.5 + 0.5 * eased;
                 const opacity = Math.min(1, eased * 2);
@@ -156,17 +93,9 @@ export default function Timeline() {
                     <h2 className="section-title">My Journey</h2>
                 </div>
 
-                {/* 3D Moon - Centered */}
+                {/* Interactive Earth Globe - Centered */}
                 <div className="moon-3d-canvas">
-                    <Canvas shadows dpr={[1, 2]} camera={{ fov: 45 }}>
-                        <Suspense fallback={null}>
-                            {/* Darker per request: intensity 0.15 */}
-                            <Stage environment="city" intensity={0.05} contactShadow={false} adjustCamera>
-                                <MoonModel scrollProgress={scrollProgress} />
-                            </Stage>
-                        </Suspense>
-                        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.2} makeDefault />
-                    </Canvas>
+                    <GlobePulse />
                 </div>
 
                 {/* Cards Container */}
